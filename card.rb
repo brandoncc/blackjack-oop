@@ -11,4 +11,14 @@ class Card
   def to_s
     "#{@value} of #{@suit}"
   end
+
+  def value
+    if @value == 'Ace'
+      11
+    elsif @value.to_i == 0 && @value != 'Ace'
+      10
+    else
+      @value.to_i
+    end
+  end
 end
