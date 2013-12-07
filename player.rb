@@ -15,5 +15,9 @@ class Player
     puts "Nice to meet you, #{name}"
 
     @hands = [Hand.new]
+
+  def hand
+    hands.first
+  end
   end
 end
