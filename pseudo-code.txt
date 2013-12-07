@@ -59,3 +59,52 @@ If you have blackjack AND the dealer is showing an ace (and you believe dealer h
 The bonus you received for blackjack goes to pay the insurance, while you receive even money (1:1) on your bet
 
 If ins/even money not taken, and both have blackjack...hand is a push.
+
+
+How to play, home play rules
+----------------------------
+
+Walk up to table
+Dealer greet player
+
+Player's turn
+
+Player is dealt two cards
+Dealer is dealt one card face down and one card face up
+If dealer or play > 21, they busted
+If player or dealer has an ace and a 4, it is a soft 15, because it can be 5 or 15
+If player or dealer has a hand where receiving a 10 will bust, it is a "hard" hand
+If players first two cards equal 17-21, you want to stay
+If players first two cards equal 2-16, you want to hit
+Blackjack is only achieved on first two cards.  After that, you have 21.
+
+Dealer's turn
+
+Must hit on 16 or lower, over 21 busts
+
+Comparing hands
+
+Closer to 21 wins hand
+If player wins, they receive bet paid 1:1.  If they lose, they lose the bet.
+If ==, the bet stays on the table
+
+Blackjack
+
+Payout is 3:2, so player receives 1.5x original bet
+
+If dealer and player both have blackjack, it is a push
+
+Insurance
+
+If dealer has an Ace showing, they offer insurance.
+  Insurance is a side bet that player can bet if they think dealer has blackjack
+Insurance bet can be up to half of original bet.
+
+If dealer has blackjack, you keep your side bet as well as your original bet.
+  If not, you lose your side bet.
+
+If you have blackjack AND the dealer is showing an ace (and you believe dealer has blackjack),
+  ask for even money instead of insurance.
+The bonus you received for blackjack goes to pay the insurance, while you receive even money (1:1) on your bet
+
+If ins/even money not taken, and both have blackjack...hand is a push.
