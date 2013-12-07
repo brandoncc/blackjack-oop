@@ -4,7 +4,7 @@ class Deck
 
   def initialize(how_many_decks)
     @shuffled_cards = []
-    @discard_pile = []
+    @discard_pile   = []
 
     how_many_decks.times do
       %w(Clubs Diamonds Hearts Spades).each do |s|
