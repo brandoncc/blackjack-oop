@@ -7,4 +7,8 @@ class Card
     @suit = s
     @hidden = false
   end
+
+  def to_s
+    "#{@value} of #{@suit}"
+  end
 end
