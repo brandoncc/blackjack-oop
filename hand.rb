@@ -1,5 +1,10 @@
 # hand class
 class Hand
+  attr_accessor :cards
+
+  def initialize
+    @cards = []
+  end
 
   def calculate_value
     score      = { value: 0, soft_or_hard: nil }
