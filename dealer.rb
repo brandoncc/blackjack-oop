@@ -3,6 +3,7 @@ class Dealer
   attr_accessor :deck, :hand
 
   def initialize
-    @hand = hand.new
+    @hand = Hand.new
+    @has_blackjack = false
   end
 end
