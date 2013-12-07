@@ -21,6 +21,14 @@ class Blackjack
 
   def play_home_rules
     puts 'You chose home rules.'
+
+  def deal_cards
+    2.times do
+      @dealer.hand.cards << @deck.shuffled_cards.shift
+      @player.hand.cards << @deck.shuffled_cards.shift
+    end
+    @dealer.hand.cards.last.hidden = true
+  end
   end
 
   def play_vegas_rules
