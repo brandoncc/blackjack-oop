@@ -15,6 +15,7 @@ class Player
     puts "Nice to meet you, #{name}"
 
     @hands = [Hand.new]
+    @has_blackjack = false
 
   def hand
     hands.first
