@@ -1,6 +1,6 @@
 # player class
 class Player
-  attr_accessor :name
+  attr_accessor :name, :hands
 
   def initialize
     puts 'Hello, what is your name?'
@@ -13,5 +13,7 @@ class Player
     @name = input
 
     puts "Nice to meet you, #{name}"
+
+    @hands = [Hand.new]
   end
 end
