@@ -8,7 +8,7 @@ class Deck
 
     %w(Clubs, Diamonds, Hearts, Spades).each do |s|
       %w(2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace).each do |v|
-        @shuffled_cards << { suit: s, value: v }
+        @shuffled_cards << Card.new(v, s)
       end
     end
 
