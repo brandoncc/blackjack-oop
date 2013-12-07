@@ -16,9 +16,13 @@ class Player
 
     @hands = [Hand.new]
     @has_blackjack = false
+  end
 
   def hand
     hands.first
   end
+
+  def has_blackjack?
+
   end
 end
