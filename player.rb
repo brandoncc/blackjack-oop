@@ -1,3 +1,4 @@
+# player class
 class Player
   attr_accessor :name
 
