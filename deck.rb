@@ -6,9 +6,8 @@ class Deck
     @shuffled_cards = []
     @discard_pile = []
 
-    %w(Clubs, Diamonds, Hearts, Spades).each do |s|
-      %w(2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace).each do |v|
-        @shuffled_cards << Card.new(v, s)
+      %w(Clubs Diamonds Hearts Spades).each do |s|
+        %w(2 3 4 5 6 7 8 9 10 Jack Queen King Ace).each do |v|
       end
     end
 
