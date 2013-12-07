@@ -8,7 +8,7 @@ class Blackjack
   def initialize
     @player = Player.new
     @dealer = Dealer.new
-    @deck   = Deck.new
+    @deck   = Deck.new(6)
 
     loop do
       puts ''
