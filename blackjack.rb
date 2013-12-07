@@ -42,4 +42,16 @@ class Blackjack
       'invalid'
     end
   end
+
+  def print_cards(name, hand)
+    if name.downcase == 'dealer'
+      puts "#{name.capitalize} has:"
+    elsif name.downcase == 'player' || name.downcase == 'you'
+      puts 'You have:'
+    end
+
+    hand.cards.each { |card| puts card.hidden ? '*hidden*' : card.to_s }
+
+    puts "For a total of #{hand.calculate_value[:value]} points." if name.downcase != 'dealer'
+  end
 end
