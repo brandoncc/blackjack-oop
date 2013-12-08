@@ -24,7 +24,7 @@ class Player
 
   def pushed!
     puts 'This hand was a push. Some would say that is better than a loss.'
-    @stats[:losses] += 1
+    @stats[:pushes] += 1
   end
 
   def busted
