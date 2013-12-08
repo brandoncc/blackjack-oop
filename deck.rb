@@ -1,5 +1,5 @@
 class Deck
-  attr_writer :discard_pile
+  attr_accessor :discard_pile
 
   # @param [Fixnum] how_many_decks
   def initialize(how_many_decks)
