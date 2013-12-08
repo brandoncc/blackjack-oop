@@ -17,7 +17,7 @@ class Deck
     shuffle_deck!
   end
 
-  def deal
+  def draw
     shuffle_deck! if @shuffled_cards.count == 0
     @shuffled_cards.shift
   end

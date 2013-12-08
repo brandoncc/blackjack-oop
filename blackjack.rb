@@ -76,7 +76,7 @@ class Blackjack
 
         case @player.choose_action
           when 'h'
-            @player.hand.cards << @deck.deal
+            @player.hand.cards << @deck.draw
           else
             break
         end
@@ -89,7 +89,7 @@ class Blackjack
   def dealer_turn
     @dealer.hand.cards.each { |card| card.hidden = false }
     until @dealer.hand.calculate_value[:value] > 17
-      @dealer.hand.cards << @deck.deal
+      @dealer.hand.cards << @deck.draw
     end
   end
 

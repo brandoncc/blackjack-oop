@@ -11,8 +11,8 @@ class Dealer < Player
 
   def deal
     2.times do
-      @opponent.hand.cards << @deck.deal
-      hand.cards << @deck.deal
+      @opponent.hand.cards << @deck.draw
+      hand.cards << @deck.draw
     end
 
     hand.cards.last.hidden = true
