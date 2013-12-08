@@ -7,11 +7,19 @@ class Hand
   end
 
   def is_blackjack?
-    cards.count == 2 && calculate_value[:value] == 21
+    cards.count == 2 && value == 21
   end
 
   def is_bust?
-    calculate_value[:value] > 21
+    value > 21
+  end
+
+  def value
+    calculate_value[:value]
+  end
+
+  def soft_or_hard
+    calculate_value[:soft_or_hard]
   end
 
   def announce_cards
@@ -34,9 +42,7 @@ class Hand
     end
 
     card_strings_array << 'For a total value of: ' +
-        "#{calculate_value[:soft_or_hard].nil? ? '' :
-            "#{calculate_value[:soft_or_hard]} " }" +
-        "#{calculate_value[:value]}."
+        "#{soft_or_hard.nil? ? '' : "#{soft_or_hard} " }" + "#{value}."
 
     card_strings_array.join("\n")
   end

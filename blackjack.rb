@@ -80,14 +80,12 @@ class Blackjack
 
   def dealer_turn
     @dealer.hand.cards.each { |card| card.hidden = false }
-    until @dealer.hand.calculate_value[:value] > 17
-      @dealer.hand.cards << @deck.draw
-    end
+    @dealer.hand.cards << @deck.draw until @dealer.hand.value > 17
   end
 
   def compare_scores
-    case @player.hand.calculate_value[:value] <=>
-        @dealer.hand.calculate_value[:value]
+    case @player.hand.value <=>
+        @dealer.hand.value
     when -1
       @player.lost!
     when 0
