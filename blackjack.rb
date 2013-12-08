@@ -18,6 +18,14 @@ class Blackjack
     end
   end
 
+  def discard_cards
+    [@player, @dealer].each do |e|
+      while e.hand.cards.count > 0
+        @deck.discard_pile << e.hand.cards.shift
+      end
+    end
+  end
+
   def play_again?
     unless @player.first_game?
       loop do

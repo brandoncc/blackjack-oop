@@ -1,4 +1,6 @@
 class Deck
+  attr_writer :discard_pile
+
   # @param [Fixnum] how_many_decks
   def initialize(how_many_decks)
     @shuffled_cards = []
