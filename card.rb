@@ -5,8 +5,8 @@ class Card
   # @param [String] value
   # @param [String] suit
   def initialize(value, suit)
-    @value = value
-    @suit  = suit
+    @value  = value
+    @suit   = suit
     @hidden = false
   end
 
