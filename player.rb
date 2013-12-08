@@ -8,6 +8,10 @@ class Player
     @stats = { wins: 0, losses: 0, pushes: 0 }
   end
 
+  def first_game?
+    @stats[:wins].zero? && @stats[:losses].zero? && @stats[:pushes].zero?
+  end
+
   def lost!
     puts 'You lost, sorry.'
     @stats[:losses] += 1

@@ -7,11 +7,33 @@ class Blackjack
 
   def start_game
     greet_player
-    deal_cards
-    unless player_turn == :no_dealer_turn
-      dealer_turn
+
+    while play_again?
+      deal_cards
+      unless player_turn == :no_dealer_turn
+        dealer_turn
+      end
+      announce_winner
+      discard_cards
     end
-    announce_winner
+  end
+
+  def play_again?
+    unless @player.first_game?
+      loop do
+        puts 'Would you like to play again?'
+
+        case gets.chomp.downcase
+          when 'y', 'yes'
+            return true
+          when 'n', 'no'
+            return false
+        end
+      end
+    end
+
+    # do not ask to "play again" on the first hand
+    true
   end
 
   def greet_player
