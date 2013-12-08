@@ -1,3 +1,4 @@
+# Card class for blackjack game
 class Card
   attr_accessor :hidden
   attr_reader :suit, :value
@@ -12,14 +13,14 @@ class Card
 
   def score_value
     case @value.to_i
-      when 0
-        if @value == 'Ace'
-          11
-        else
-          10
-        end
+    when 0
+      if @value == 'Ace'
+        11
       else
-        @value.to_i
+        10
+      end
+    else
+      @value.to_i
     end
   end
 end

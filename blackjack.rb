@@ -1,3 +1,4 @@
+# Blackjack class
 class Blackjack
   def initialize
     @deck   = Deck.new(6)
@@ -10,9 +11,9 @@ class Blackjack
 
     while play_again?
       deal_cards
-      unless player_turn == :no_dealer_turn
-        dealer_turn
-      end
+
+      player_turn || dealer_turn
+
       announce_winner
       discard_cards
     end
@@ -20,9 +21,7 @@ class Blackjack
 
   def discard_cards
     [@player, @dealer].each do |e|
-      while e.hand.cards.count > 0
-        @deck.discard_pile << e.hand.cards.shift
-      end
+      @deck.discard_pile << e.hand.cards.shift while e.hand.cards.count > 0
     end
   end
 
@@ -31,12 +30,9 @@ class Blackjack
       loop do
         puts 'Would you like to play again?'
 
-        case gets.chomp.downcase
-          when 'y', 'yes'
-            return true
-          when 'n', 'no'
-            return false
-        end
+        input = gets.chomp.downcase
+        return true if %w(y yes).include?(input)
+        return false if %w(n no).include?(input)
       end
     end
 
@@ -74,16 +70,12 @@ class Blackjack
       until @player.hand.is_blackjack? || @player.hand.is_bust?
         tell_cards_in_hands
 
-        case @player.choose_action
-          when 'h'
-            @player.hand.cards << @deck.draw
-          else
-            break
-        end
+        action = @player.choose_action
+        @player.hand.cards << @deck.draw if action == 'h' || break
       end
     end
 
-    :no_dealer_turn if @player.hand.is_blackjack? || @player.hand.is_bust?
+    @player.hand.is_blackjack? || @player.hand.is_bust?
   end
 
   def dealer_turn
@@ -94,18 +86,18 @@ class Blackjack
   end
 
   def compare_scores
-    case @player.hand.calculate_value[:value] <=> @dealer.hand.calculate_value[:value]
-      when -1
-        @player.lost!
-      when 0
-        @player.pushed!
-      when 1
-        @player.won!
+    case @player.hand.calculate_value[:value] <=>
+        @dealer.hand.calculate_value[:value]
+    when -1
+      @player.lost!
+    when 0
+      @player.pushed!
+    when 1
+      @player.won!
     end
   end
 
   def announce_winner
-    someone_hit_or_bust = false
     tell_cards_in_hands
 
     someone_hit_or_bust = check_player_hit_or_bust unless someone_hit_or_bust
@@ -124,13 +116,12 @@ class Blackjack
   end
 
   def check_dealer_hit_or_bust
-    dealer_hit_or_bust = false
     if @dealer.hand.is_bust?
-      "Dealer busted, you win!"
+      puts 'Dealer busted, you win!'
       @player.won!
     end
     if @dealer.hand.is_blackjack?
-      'Dealer got blackjack, you lose.'
+      puts 'Dealer got blackjack, you lose.'
       @player.lost!
     end
 

@@ -1,5 +1,6 @@
 require_relative 'player'
 
+# Dealer class for blackjack game
 class Dealer < Player
   # @param [Deck] deck_for_dealing
   # @param [Player] player

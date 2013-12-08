@@ -1,12 +1,9 @@
+# Hand class for blackjack game
 class Hand
   attr_accessor :cards
 
   def initialize
     @cards = []
-  end
-
-  def hit
-
   end
 
   def is_blackjack?
@@ -19,23 +16,35 @@ class Hand
 
   def announce_cards
     if @cards.count == 2 && (@cards.first.hidden || @cards.last.hidden)
-      "Showing #{first_not_hidden_card.value} of #{first_not_hidden_card.suit}"
+      showing_card
     else
-      card_strings_array = []
-      @cards.each { |card| card_strings_array << "#{card.value} of #{card.suit}" }
-      card_strings_array <<
-          "For a total value of: #{calculate_value[:soft_or_hard].nil? ? '' : "#{calculate_value[:soft_or_hard]} " }#{calculate_value[:value]}."
-
-      card_strings_array.join("\n")
+      show_all_cards
     end
+  end
+
+  def showing_card
+    "Showing #{first_not_hidden_card.value} of #{first_not_hidden_card.suit}"
+  end
+
+  def show_all_cards
+    card_strings_array = []
+    @cards.each do |card|
+      card_strings_array <<
+          "#{card.value} of #{card.suit}"
+    end
+
+    card_strings_array << 'For a total value of: ' +
+        "#{calculate_value[:soft_or_hard].nil? ? '' :
+            "#{calculate_value[:soft_or_hard]} " }" +
+        "#{calculate_value[:value]}."
+
+    card_strings_array.join("\n")
   end
 
   # @return [Card]
   def first_not_hidden_card
     @cards.each do |card|
-      unless card.hidden
-        return card
-      end
+      return card unless card.hidden
     end
   end
 
@@ -52,27 +61,31 @@ class Hand
     end
 
     calculate_aces(score, aces_count)
-
   end
 
   # @param [Hash] current_score
   # @param [Fixnum] count
   def calculate_aces(current_score, count)
-    # If any items are in the ace array, calculate them in based on whether they
-    #   need to be 11 points or 1 point. 11 points is preferred, unless it will
-    #   cause a bust, in which case, calculate it as 1 point.
+    # If any items are in the ace array, calculate them in based on whether
+    #   they need to be 11 points or 1 point. 11 points is preferred, unless it
+    #   will cause a bust, in which case, calculate it as 1 point.
     i = 0
-    while i < count do
-      if (current_score[:value] + 11) > 21
-        current_score[:value] += 1
-        current_score[:soft_or_hard] = 'hard' if i == 0
-      else
-        current_score[:value] += 11
-        current_score[:soft_or_hard] = 'soft' if i == 0
-      end
+    while i < count
+      add_ace_to_score(current_score, i == 0)
+
       i += 1
     end
     current_score[:soft_or_hard] = nil if current_score[:value] > 20
     current_score
+  end
+
+  def add_ace_to_score(score, set_soft_or_hard)
+    if (score[:value] + 11) > 21
+      score[:value] += 1
+      score[:soft_or_hard] = 'hard' if set_soft_or_hard
+    else
+      score[:value] += 11
+      score[:soft_or_hard] = 'soft' if set_soft_or_hard
+    end
   end
 end

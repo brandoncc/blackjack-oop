@@ -1,3 +1,4 @@
+# Deck class for blackjack game
 class Deck
   attr_accessor :discard_pile
 

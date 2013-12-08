@@ -1,3 +1,4 @@
+# Player class for blackjack game
 class Player
   attr_accessor :hand, :name, :hands
 
@@ -41,7 +42,7 @@ class Player
     show_action_options
     input = gets.chomp
 
-    until ['h', 's'].include?(input.downcase)
+    until %w(h s).include?(input.downcase)
       input = gets.chomp
       puts "I'm sorry, '#{input}' is not a valid option."
       puts ''
@@ -57,10 +58,14 @@ class Player
     puts '=> Valid choices are (h) hit or (s) stay.'
   end
 
-  def remove_hand; end
+  def remove_hand
+  end
 
   def say_stats
-    puts "\nHere are your current stats: #{@stats[:wins]} wins, #{@stats[:losses]} losses, #{@stats[:pushes]} pushes\n"
+    puts "\nHere are your current stats:" +
+             "#{@stats[:wins]} wins, " +
+             "#{@stats[:losses]} losses, " +
+             "#{@stats[:pushes]} pushes\n"
   end
 
   def hand
