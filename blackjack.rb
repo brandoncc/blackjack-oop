@@ -59,10 +59,10 @@ class Blackjack
 
   def tell_cards_in_hands
     puts "Dealer's cards:"
-    puts @dealer.hand.announce_cards
+    puts "#{@dealer.hand}"
     puts ''
     puts 'Your cards:'
-    puts @player.hand.announce_cards
+    puts "#{@player.hand}"
   end
 
   def player_turn

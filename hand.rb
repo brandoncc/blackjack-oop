@@ -22,7 +22,7 @@ class Hand
     calculate_value[:soft_or_hard]
   end
 
-  def announce_cards
+  def to_s
     if @cards.count == 2 && (@cards.first.hidden || @cards.last.hidden)
       showing_card
     else
