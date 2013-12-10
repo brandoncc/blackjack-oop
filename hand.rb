@@ -31,14 +31,14 @@ class Hand
   end
 
   def showing_card
-    "Showing #{first_not_hidden_card.value} of #{first_not_hidden_card.suit}"
+    "Showing #{first_not_hidden_card}"
   end
 
   def show_all_cards
     card_strings_array = []
     @cards.each do |card|
       card_strings_array <<
-          "#{card.value} of #{card.suit}"
+          "#{card}"
     end
 
     card_strings_array << 'For a total value of: ' +
